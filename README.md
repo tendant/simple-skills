@@ -12,18 +12,85 @@ Claude Code skills are markdown files that teach Claude how to perform specific 
 **Location:** `gitea/`
 **Description:** Interact with Gitea (self-hosted Git service) using the Gitea API for repository, issue, and pull request management.
 
+## Quick Start
+
+```bash
+# Install all skills from GitHub
+git clone https://github.com/tendant/simple-skills.git /tmp/simple-skills
+cp -r /tmp/simple-skills/*/ ~/.claude/skills/
+rm -rf /tmp/simple-skills
+
+# Restart Claude Code to load the new skills
+```
+
 ## Installation
 
-### Personal Installation (Available Across All Projects)
+### Option 1: Install from GitHub (Recommended)
+
+Clone the repository and install skills directly from GitHub:
+
 ```bash
-# Copy skills to your personal Claude skills directory
+# Clone the repository to a temporary location
+git clone https://github.com/tendant/simple-skills.git /tmp/simple-skills
+
+# Install all skills to your personal Claude skills directory
+cp -r /tmp/simple-skills/*/  ~/.claude/skills/
+
+# Or install specific skills only
+cp -r /tmp/simple-skills/gitea ~/.claude/skills/
+
+# Clean up
+rm -rf /tmp/simple-skills
+```
+
+### Option 2: Install from Local Clone
+
+If you've already cloned this repository:
+
+```bash
+# Install all skills to your personal Claude skills directory
+cp -r */  ~/.claude/skills/
+
+# Or install specific skills only
 cp -r gitea ~/.claude/skills/
 ```
 
-### Project Installation (Available Only in This Repository)
+### Option 3: Project-Specific Installation
+
+To make skills available only in a specific project:
+
 ```bash
-# Copy skills to project's Claude skills directory
-cp -r gitea .claude/skills/
+# From the cloned repository
+mkdir -p /path/to/your/project/.claude/skills
+cp -r gitea /path/to/your/project/.claude/skills/
+
+# Or from within your project directory
+git clone https://github.com/tendant/simple-skills.git /tmp/simple-skills
+mkdir -p .claude/skills
+cp -r /tmp/simple-skills/gitea .claude/skills/
+rm -rf /tmp/simple-skills
+```
+
+> **Note:** After installing or updating skills, restart Claude Code for the changes to take effect.
+
+## Updating Skills
+
+To update your installed skills with the latest versions from GitHub:
+
+```bash
+# Pull the latest changes
+git clone https://github.com/tendant/simple-skills.git /tmp/simple-skills
+
+# Update all skills
+cp -r /tmp/simple-skills/*/ ~/.claude/skills/
+
+# Or update specific skills
+cp -r /tmp/simple-skills/gitea ~/.claude/skills/
+
+# Clean up
+rm -rf /tmp/simple-skills
+
+# Restart Claude Code to load the updates
 ```
 
 ## Usage
@@ -71,11 +138,20 @@ Clear, step-by-step guidance for Claude.
 
 ## Contributing
 
-Feel free to add new skills to this collection! Each skill should:
+We welcome contributions! To add a new skill:
+
+1. Fork the repository at https://github.com/tendant/simple-skills
+2. Create a new directory with the skill name (lowercase, hyphens only)
+3. Add a `SKILL.md` file following the standard format
+4. Test the skill locally
+5. Submit a pull request
+
+Each skill should:
 - Have a clear, specific purpose
 - Include comprehensive instructions
 - Follow the standard skill format
 - Be well-documented
+- Include usage examples
 
 ## Resources
 
